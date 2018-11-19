@@ -34,7 +34,14 @@ include Makefile
 OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
-OBJECTFILES=
+OBJECTFILES= \
+	${OBJECTDIR}/Sources/cAbstCondMean.o \
+	${OBJECTDIR}/Sources/cAbstCondVar.o \
+	${OBJECTDIR}/Sources/cAbstResiduals.o \
+	${OBJECTDIR}/Sources/cCondMean.o \
+	${OBJECTDIR}/Sources/cCondVar.o \
+	${OBJECTDIR}/Sources/cRegArchModel.o \
+	${OBJECTDIR}/Sources/cRegArchValue.o
 
 
 # C Compiler Flags
@@ -59,7 +66,42 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libProjet.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libProjet.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libProjet.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
+
+${OBJECTDIR}/Sources/cAbstCondMean.o: Sources/cAbstCondMean.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cAbstCondMean.o Sources/cAbstCondMean.cpp
+
+${OBJECTDIR}/Sources/cAbstCondVar.o: Sources/cAbstCondVar.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cAbstCondVar.o Sources/cAbstCondVar.cpp
+
+${OBJECTDIR}/Sources/cAbstResiduals.o: Sources/cAbstResiduals.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cAbstResiduals.o Sources/cAbstResiduals.cpp
+
+${OBJECTDIR}/Sources/cCondMean.o: Sources/cCondMean.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cCondMean.o Sources/cCondMean.cpp
+
+${OBJECTDIR}/Sources/cCondVar.o: Sources/cCondVar.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cCondVar.o Sources/cCondVar.cpp
+
+${OBJECTDIR}/Sources/cRegArchModel.o: Sources/cRegArchModel.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cRegArchModel.o Sources/cRegArchModel.cpp
+
+${OBJECTDIR}/Sources/cRegArchValue.o: Sources/cRegArchValue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/Sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cRegArchValue.o Sources/cRegArchValue.cpp
 
 # Subprojects
 .build-subprojects:
