@@ -3,7 +3,7 @@
 class cCondMean
 {
   public:
-    Vector <*cAbstCondMean>;
+    Vector<*cAbstCondMean>;
  
     cCondMean();
     double mcomputeMean(int t,cRegArchValue enst);
