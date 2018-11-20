@@ -21,7 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -56,21 +57,21 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.so
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.${CND_DLIB_EXT}
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.so: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.so -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
 ${OBJECTDIR}/Sources/StdAfxError.o: Sources/StdAfxError.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources
-	${RM} $@.d
-	$(COMPILE.cc) -g -IHeaders -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Sources/StdAfxError.o Sources/StdAfxError.cpp
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -IHeaders -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/StdAfxError.o Sources/StdAfxError.cpp
 
 ${OBJECTDIR}/Sources/cError.o: Sources/cError.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Sources
-	${RM} $@.d
-	$(COMPILE.cc) -g -IHeaders -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Sources/cError.o Sources/cError.cpp
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -IHeaders -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Sources/cError.o Sources/cError.cpp
 
 # Subprojects
 .build-subprojects:
@@ -78,7 +79,7 @@ ${OBJECTDIR}/Sources/cError.o: Sources/cError.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.so
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:

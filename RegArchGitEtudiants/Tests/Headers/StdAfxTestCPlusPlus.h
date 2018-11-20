@@ -1,6 +1,6 @@
-// stdafx.h�: fichier Include pour les fichiers Include syst�me standard,
-// ou les fichiers Include sp�cifiques aux projets qui sont utilis�s fr�quemment,
-// et sont rarement modifi�s
+// stdafx.h : fichier Include pour les fichiers Include systeme standard,
+// ou les fichiers Include specifiques aux projets qui sont utilises frequemment,
+// et sont rarement modifies
 //
 
 #pragma once
@@ -15,5 +15,5 @@
 #include <ostream>
 #include <gsl/gsl_cdf.h>
 
-
-// TODO: faites r�f�rence ici aux en-t�tes suppl�mentaires n�cessaires au programme
+#include "StdAfxRegArchLib.h"
+// TODO: faites reference ici aux en-tetes supplementaires necessaires au programme

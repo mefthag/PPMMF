@@ -21,7 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -51,24 +52,24 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../VectorAndMatrix/build/Debug/GNU-Linux-x86 -L../Error/build/Debug/GNU-Linux-x86 -Wl,-rpath ../VectorAndMatrix/dist/Debug/GNU-Linux-x86 -L../VectorAndMatrix/dist/Debug/GNU-Linux-x86 -lVectorAndMatrix -Wl,-rpath ../Error/dist/Debug/GNU-Linux-x86 -L../Error/dist/Debug/GNU-Linux-x86 -lError -lgsl -lgslcblas
+LDLIBSOPTIONS=-L../VectorAndMatrix/build/Debug/GNU-Linux-x86 -L../Error/build/Debug/GNU-Linux-x86 -Wl,-rpath,../VectorAndMatrix/dist/Debug/GNU-Linux -L../VectorAndMatrix/dist/Debug/GNU-Linux -lVectorAndMatrix -Wl,-rpath,../Error/dist/Debug/GNU-Linux -L../Error/dist/Debug/GNU-Linux -lError -lgsl -lgslcblas
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../VectorAndMatrix/dist/Debug/GNU-Linux-x86/libVectorAndMatrix.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../VectorAndMatrix/dist/Debug/GNU-Linux/libVectorAndMatrix.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../Error/dist/Debug/GNU-Linux-x86/libError.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../Error/dist/Debug/GNU-Linux/libError.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Source/Tests.o: Source/Tests.cpp 
 	${MKDIR} -p ${OBJECTDIR}/Source
-	${RM} $@.d
-	$(COMPILE.cc) -g -I../Error/Headers -I../VectorAndMatrix/Headers -IHeaders -MMD -MP -MF $@.d -o ${OBJECTDIR}/Source/Tests.o Source/Tests.cpp
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I../Error/Headers -I../VectorAndMatrix/Headers -I../RegArchLib/Headers -IHeaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Source/Tests.o Source/Tests.cpp
 
 # Subprojects
 .build-subprojects:

@@ -1,25 +1,11 @@
-//============================================================================
-// Name        : Tests.cpp
-// Author      : J.B. Durand & O. Taramasco
-// Version     :
-// Copyright   : Cecill
-// Description : Hello World in C++, Ansi-style
-//============================================================================
+// Test.cpp : definit le point d'entree pour l'application console.
+//
 
-#include <iostream>
-using namespace std;
-
-#include <vector>
-#include <gsl/gsl_math.h>
-#include "StdAfxError.h"
-#include "StdAfxVectorAndMatrix.h"
 #include "StdAfxTestCPlusPlus.h"
-
-//#include "cGSLVector.h"
-//#include "cGSLMatrix.h"
 
 using namespace ErrorNameSpace;
 using namespace VectorAndMatrixNameSpace;
+using namespace RegArchLib ;
 
 #ifdef WIN32
 int _tmain(int argc, _TCHAR* argv[])
@@ -27,41 +13,66 @@ int _tmain(int argc, _TCHAR* argv[])
 int main(int argc, char* argv[])
 #endif //WIN32
 {
-	unsigned int i;
+	cout.precision(12) ; 
 
-	cGSLVector vec(3), res_produit_vec(0);
-	cGSLMatrix mat(2,3), res_produit_mat(0);
-	std::vector<double> std_vec(0);
+	/*********
+	 * ARMA pur
+	 *******/
+	cConst myConst(0.1);
+	
+	cAr	myAr(2) ;
+	
+	myAr.Set(.8, 0) ;
+	myAr.Set(-.2, 1) ;
+	myAr.Print() ;
+	
+	cMa myMa(2) ;
+	myMa.Set(0.8, 0) ;
+	myMa.Set(0.6, 1) ;
+	
+	cCondMean myCondMeanArma ;
+	myCondMeanArma.SetOneMean(0, myConst) ;
+	myCondMeanArma.SetOneMean(1, myAr) ;
+	myCondMeanArma.SetOneMean(2, myMa) ;
 
-	for(i = 0; i < 3; i++)
-		vec[i] = i+1;
+	cConstCondVar myConstVar(1.0) ;
 
-	cout << "Multiplication du vecteur :" << endl;
-	vec.Print();
+	cCondVar myCondVar ;
+	myCondVar.SetOneVar(0, myConstVar) ;
+	
+	cNormResiduals myNormResid ;
 
-	for(i = 0; i < 3; i++)
+	cRegArchModel myModelArma ;
+	myModelArma.SetMean(myCondMeanArma) ;
+	myModelArma.SetVar(myCondVar) ;
+	myModelArma.SetResid(myNormResid) ;
+	cout << "Modele : " ;
+	myModelArma.Print() ;
+	
+	cRegArchModel myModelArmaCp(myModelArma) ;
+	cout << "Copie du modele : " ;
+	myModelArmaCp.Print() ;
+
+	// Observations
+	uint myNData = 10 ;
+	cRegArchValue myGivenValue(myNData) ;
+	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
 	{
-		(mat[0])[i] = i + 1;
-		(mat[1])[i] = 3 + i + 1;
+		myGivenValue.mYt[t] = t;
 	}
-	cout << "... par la matrice : " << endl;
-	mat.Print();
+	cDVector myMeans(myNData);	
+        // Moyennes conditionnelles
 
-	res_produit_mat = mat;
-	res_produit_mat *= vec;
-	res_produit_vec = res_produit_mat;
-
-	cout << "Resultat : " << endl;
-	res_produit_vec.Print();
-
-	std_vec.resize(vec.GetSize());
-	for(i=0; i < std_vec.size(); i++)
+	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
 	{
-		std_vec[i] = gsl_expm1((double)(vec)[i]);
-		vec[i] = std_vec[i];
+		myMeans[t] = myCondMeanArma.ComputeMean(t, myGivenValue);
+		myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
+		myGivenValue.mMt[t] = myMeans[t];
 	}
+	cout << "Moyennes conditionnelles ARMA pur gaussien: " << endl ;
+	myMeans.Print();
 
-	cout << "Exponentielle - 1 du vecteur initial : " <<endl;
-	vec.Print();
+	return 0 ;
+
 
 }

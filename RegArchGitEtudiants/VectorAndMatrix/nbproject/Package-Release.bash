@@ -6,14 +6,15 @@
 
 # Macros
 TOP=`pwd`
-CND_PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux
 CND_CONF=Release
 CND_DISTDIR=dist
 CND_BUILDDIR=build
+CND_DLIB_EXT=so
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libVectorAndMatrix.so
-OUTPUT_BASENAME=libVectorAndMatrix.so
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libVectorAndMatrix.${CND_DLIB_EXT}
+OUTPUT_BASENAME=libVectorAndMatrix.${CND_DLIB_EXT}
 PACKAGE_TOP_DIR=libVectorAndMatrix.so/
 
 # Functions

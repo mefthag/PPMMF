@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="80">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -39,14 +39,16 @@
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <ccTool>
           <incDir>
             <pElem>../Error/Headers</pElem>
             <pElem>../VectorAndMatrix/Headers</pElem>
+            <pElem>../RegArchLib/Headers</pElem>
             <pElem>Headers</pElem>
           </incDir>
         </ccTool>
@@ -84,12 +86,49 @@
             <linkerLibLibItem>gslcblas</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../Error"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../Error"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libError.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../VectorAndMatrix"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../VectorAndMatrix"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libVectorAndMatrix.${CND_DLIB_EXT}">
+          </makeArtifact>
+          <makeArtifact PL="../RegArchLib"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../RegArchLib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libRegArchLib.${CND_DLIB_EXT}">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
+      <item path="Headers/StdAfxTestCPlusPlus.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Source/Tests.cpp" ex="false" tool="1" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
@@ -105,6 +144,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Headers/StdAfxTestCPlusPlus.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Source/Tests.cpp" ex="false" tool="1" flavor2="0">
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>
