@@ -129,7 +129,11 @@ namespace RegArchLib {
 	 */
 	double cMa::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-		// Complete	
+		uint myNMa = mvMa.GetSize();
+		double cMaMean = 0;
+		for (register uint j = 0 ; j <  myNMa ; j++)
+			cMaMean += mvMa[j] * theData->mUt[theData-j-1];
+		return cMaMean;	
 	}
 
 	uint cMa::GetNParam(void) const

@@ -162,7 +162,13 @@ namespace RegArchLib {
 	*/
 	double cGarch::ComputeVar(uint theDate, const cRegArchValue& theData) const 
 	{
-		// Complete	
+	    	uint q = mvGarch.GetSize();
+		double cGarchMean = 0;
+		for (register uint l = 0; l < q; l++){
+			cGarchMean += mvGarch[l] * theData->mHt[theDate-l-1];
+		}
+		return mean;
+
 	}
 
 	uint cGarch::GetNParam(void) const
