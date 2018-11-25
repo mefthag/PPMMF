@@ -13,7 +13,7 @@ namespace RegArchLib {
 	 */
 	cConst::cConst(double theVal)
 	:cAbstCondMean(eConst) // call constructor of cAbstCondMean with type eConst
-	{	
+	{
 		mvConst = theVal ;
 		MESS_CREAT("cConst") ;
 	}
@@ -30,9 +30,9 @@ namespace RegArchLib {
 	/*!
 	 * \fn cAbstCondMean* cConst::PtrCopy()
 	 */
-	cConst::PtrCopy() const
+	cConst* cConst::PtrCopy() const
 	{
-		// complete
+		return new cConst(mvConst);
 	}
 
 	/*!
@@ -117,7 +117,7 @@ namespace RegArchLib {
 	 */
 	double cConst::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-		// Complete	
+		// Complete
 	}
 
 	uint cConst::GetNParam(void) const

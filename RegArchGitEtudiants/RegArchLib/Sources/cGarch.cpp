@@ -3,7 +3,7 @@
 	\file cGarch.cpp
 	\brief sources for class cGarch methods.
 
-	\author Jean-Baptiste DURAND, Ollivier TARAMASCO 
+	\author Jean-Baptiste DURAND, Ollivier TARAMASCO
 	\date dec-18-2006 - Last change feb-18-2011
 */
 namespace RegArchLib {
@@ -13,7 +13,7 @@ namespace RegArchLib {
 	*/
 	cGarch::cGarch(uint theNGarch)
 	:cAbstCondVar(eGarch)  // call constructor of cAbstCondVar with type eGarch
-	{	
+	{
 		mvGarch.ReAlloc(theNGarch) ;
 		MESS_CREAT("cGarch") ;
 	}
@@ -40,9 +40,9 @@ namespace RegArchLib {
 	 * \fn cAbstCondVar* cGarch::PtrCopy()
 	 */
 
-	cGarch::PtrCopy() const
+	cGarch* cGarch::PtrCopy() const
 	{
-		// Complete
+		return cGarch(mvGarch);
 	}
 
 	/*!
@@ -51,7 +51,7 @@ namespace RegArchLib {
 	 * \details Free memory
 	 */
 	void cGarch::Delete(void)
-	{	
+	{
 		mvGarch.Delete() ;
 	}
 	/*!
@@ -144,7 +144,7 @@ namespace RegArchLib {
 	double  cGarch::Get(uint theIndex, uint theNumParam)
 	{
 		switch (theNumParam)
-		{	
+		{
 			case 0 :
 				return mvGarch[theIndex] ;
 			break ;
@@ -160,7 +160,7 @@ namespace RegArchLib {
 	 * \param const cRegArchValue& theData: past datas
 	 * \details theData is not updated here.
 	*/
-	double cGarch::ComputeVar(uint theDate, const cRegArchValue& theData) const 
+	double cGarch::ComputeVar(uint theDate, const cRegArchValue& theData) const
 	{
 	    	uint q = mvGarch.GetSize();
 		double cGarchMean = 0;
@@ -180,6 +180,6 @@ namespace RegArchLib {
 	{
 		mvGarch = theGarch.mvGarch;
 	}
-	
+
 
 }//namespace

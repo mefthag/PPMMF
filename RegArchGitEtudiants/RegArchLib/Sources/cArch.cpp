@@ -31,9 +31,9 @@ namespace RegArchLib {
 	/*!
 	 * \fn cArch::PtrCopy()
 	 */
-	cArch::PtrCopy() const
+	cArch* cArch::PtrCopy() const
 	{
-		// complete
+		return new cArch(mvArch); 
 	}
 
 	/*!

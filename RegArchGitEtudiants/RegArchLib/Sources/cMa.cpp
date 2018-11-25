@@ -42,9 +42,10 @@ namespace RegArchLib {
 	/*!
 	 * \fn cAbstCondMean* cMa::PtrCopy()
 	 */
-	cMa::PtrCopy() const
+	cMa* cMa::PtrCopy() const
 	{
-		// complete
+		return new cMa(mvMa);
+		
 	}
 
 	/*!
@@ -103,7 +104,7 @@ namespace RegArchLib {
 	 * \fn void cMa::ReAlloc(uint theSize, uint theNumParam)
 	 * \param uint theSize: new size of mvMA
 	 * \param uint theNumParam; not used here.
-	 * \details new allocation of mvMa 
+	 * \details new allocation of mvMa
 	 */
 	void cMa::ReAlloc(uint theSize, uint theNumParam)
 	{
@@ -133,7 +134,7 @@ namespace RegArchLib {
 		double cMaMean = 0;
 		for (register uint j = 0 ; j <  myNMa ; j++)
 			cMaMean += mvMa[j] * theData->mUt[theData-j-1];
-		return cMaMean;	
+		return cMaMean;
 	}
 
 	uint cMa::GetNParam(void) const
