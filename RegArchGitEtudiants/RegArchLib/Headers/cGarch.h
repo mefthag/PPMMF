@@ -26,7 +26,7 @@ namespace RegArchLib {
 		cGarch(cDVector& theGarch) ; ///< Another constructor
 		virtual ~cGarch() ; ///< A simple destructor
 		// Complete
-		// PtrCopy() const ; /// < Return a copy of *this
+		cGarch* PtrCopy() const ; /// < Return a copy of *this
 		void Delete(void) ; /// Delete
 		void Print(ostream& theOut=cout) const ; ///< Print the parameters
 		void ReAlloc(uint theSize, uint theNumParam=0) ; ///< Allocation of the model parameters
