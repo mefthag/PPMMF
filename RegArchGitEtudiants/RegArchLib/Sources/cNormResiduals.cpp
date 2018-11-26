@@ -31,9 +31,10 @@ namespace RegArchLib {
 	 * \fn cAbstResiduals* cNormResiduals::::PtrCopy()
 	 */
 
-	cAbstResiduals* cNormResiduals::PtrCopy() const
+	cNormResiduals* cNormResiduals::PtrCopy() const
 	{
-		// Complete
+            
+            return new cNormResiduals(NULL, mtR != NULL);
 	}
 
 	/*!

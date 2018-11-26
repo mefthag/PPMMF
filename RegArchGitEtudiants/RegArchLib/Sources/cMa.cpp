@@ -44,7 +44,9 @@ namespace RegArchLib {
 	 */
 	cMa* cMa::PtrCopy() const
 	{
-		return new cMa(mvMa);
+	    cMa*  copie =  new cMa();
+            copie->copy(*this);
+            return  copie;
 		
 	}
 
