@@ -132,8 +132,8 @@ namespace RegArchLib {
 	{
 		uint myNMa = mvMa.GetSize();
 		double cMaMean = 0;
-		for (register uint j = 0 ; j <  myNMa ; j++)
-			cMaMean += mvMa[j] * theData->mUt[theData-j-1];
+		for (register uint j = 0 ; j <  max(myNMa,theDate) ; j++)
+			cMaMean += mvMa[j] * theData.mUt[theDate-j-1];
 		return cMaMean;
 	}
 

@@ -135,8 +135,8 @@ namespace RegArchLib {
 	{
 		uint r=mvAr.GetSize();
 		double mean=0;
-		for (int i=0; i<r; i++){
-			mean+=mvAr[i]*theData->mYt[theDate-i-1];
+		for (int i=0; i<max(r,theDate); i++){
+			mean+=mvAr[i]*theData.mYt[theDate-i-1];
 		}
 		return mean;
 	}
