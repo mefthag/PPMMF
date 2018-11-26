@@ -55,7 +55,10 @@ namespace RegArchLib {
 	
 	void cNormResiduals::Generate(uint theNSample, cDVector& theYt) const 
 	{
-		// Complete	
+	    theYt.ReAlloc(theNSample);
+	    for (i=0 ; i< theNSample ; i++){
+		theYt[i] = N(0;1);
+	    }
 	}
 
 	/*!
@@ -65,7 +68,7 @@ namespace RegArchLib {
 	 */
 	double cNormResiduals::LogDensity(double theX) const
 	{
-		// Complete	
+	    return - (theX * theX) /2 - LOG_SQRT_2_PI;
 	}
 
 	/*!
