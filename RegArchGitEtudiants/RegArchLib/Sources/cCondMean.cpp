@@ -182,7 +182,11 @@ namespace RegArchLib {
 	 */
 	double cCondMean::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
-		// Complete	
+	    double res = 0;
+	    for (int i=0 ; i < mvNCondMean ; i++){
+		res += mvCondMean[i]->ComputeMean(theDate, theData);
+	    }
+	    return res;
 	}
 
 	uint cCondMean::GetNParam(void) const
