@@ -14,23 +14,23 @@ int _tmain(int argc, _TCHAR* argv[])
 int main(int argc, char* argv[])
 #endif //WIN32
 {
-	cout.precision(12) ; 
+	cout.precision(12) ;
 
 	/*********
 	 * ARMA pur
 	 *******/
 	cConst myConst(0.1);
-	
+
 	cAr	myAr(2) ;
-	
+
 	myAr.Set(.8, 0) ;
 	myAr.Set(-.2, 1) ;
 	myAr.Print() ;
-	
+
 	cMa myMa(2) ;
 	myMa.Set(0.8, 0) ;
 	myMa.Set(0.6, 1) ;
-	
+
 	cCondMean myCondMeanArma ;
 	myCondMeanArma.SetOneMean(0, myConst) ;
 	myCondMeanArma.SetOneMean(1, myAr) ;
@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 
 	cCondVar myCondVar ;
 	myCondVar.SetOneVar(0, myConstVar) ;
-	
+
 	cNormResiduals myNormResid ;
 
 	cRegArchModel myModelArma ;
@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 	myModelArma.SetResid(myNormResid) ;
 	cout << "Modele : " ;
 	myModelArma.Print() ;
-	
+
 	cRegArchModel myModelArmaCp(myModelArma) ;
 	cout << "Copie du modele : " ;
 	myModelArmaCp.Print() ;
@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 		myGivenValue.mYt[t] = t;
 	}
 
-	cDVector myMeans(myNData);	
+	cDVector myMeans(myNData);
         // Moyennes conditionnelles
 
 	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
@@ -75,20 +75,27 @@ int main(int argc, char* argv[])
 	myMeans.Print();
 
 	// Simulation
-	uint myNSample = 10;
-	cRegArchValue mySimulData;
-	cDVector mySimulVector(myNSample);
-	RegArchLib::RegArchSimul() ;
-	cout << "Valeurs simulees : " << endl ;
-	mySimulVector = mySimulData.mYt;
-	mySimulVector.Print();
-        
-        // Calcul de vraisemblance
-        double myLoglikelihood = 0.;
-        myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
-        cout << "Log-vraisemblance : " << myLoglikelihood << endl;
+	//uint myNSample = 10;
+	//cRegArchValue mySimulData;
+	//cDVector mySimulVector(myNSample);
+	//RegArchSimul(myNSample,myGivenValue,myModelArma);
+	//cout << "Valeurs simulees : " << endl ;
+	//mySimulVector = mySimulData.mYt;
+	//mySimulVector.Print();
 
-	return 0 ;
+  // Calcul de vraisemblance
+  //double myLoglikelihood = 0.;
+  //myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
+  //cout << "Log-vraisemblance : " << myLoglikelihood << endl;
+
+	//return 0 ;
 
 
 }
+
+/*double RegArchLLH(cRegArchModel myModel, cRegArchValue myGivenValue){
+	double res = 0;
+		for (uint i = 0 ; i < myGivenValue.mYt.GetSize() ; i++)
+			  res+= -1/2*log(myGivenValue.mHt[i])+myModel.GetResid().LogDensity(myGivenValue.mUt[i]/sqrt(myGivenValue.mHt[i]));
+		}
+}*/

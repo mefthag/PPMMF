@@ -10,10 +10,10 @@ namespace RegArchLib {
 
     void RegArchSimul(uint Time, cRegArchValue* myData, cRegArchModel model){
 	myData->ReAlloc(Time);
-	for (int i=0; i < Time, i++){
+        model.GetResid()->Generate(Time, myData->mEpst);
+	for(int i=0; i < Time; i++){
 	    myData->mHt[i] = model.mVar->ComputeVar(i, *myData);
-	    myData->mEpst[i] = ;
-	    myData->mUt[i] = sqrt(mHt[i])*mEpst[i];
+	    myData->mUt[i] = sqrt(myData->mHt[i])*myData->mEpst[i];
 	    myData->mMt[i] = model.mMean->ComputeMean(i, *myData);
 	    myData->mYt[i] = myData->mMt[i] + myData->mUt[i];
 	}

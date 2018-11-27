@@ -1,4 +1,4 @@
-#include "StdAfxRegArchLib.h"
+ #include "StdAfxRegArchLib.h"
 
 /*!
  \file cNormResiduals.cpp

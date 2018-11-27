@@ -56,8 +56,21 @@
           <linkerAddLib>
             <pElem>../VectorAndMatrix/build/Debug/GNU-Linux-x86</pElem>
             <pElem>../Error/build/Debug/GNU-Linux-x86</pElem>
+            <pElem>../RegArchLib/build/Debug/GNU-Linux</pElem>
           </linkerAddLib>
           <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../RegArchLib"
+                            CT="2"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../RegArchLib"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libRegArchLib.${CND_DLIB_EXT}">
+              </makeArtifact>
+            </linkerLibProjectItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../VectorAndMatrix"
                             CT="2"

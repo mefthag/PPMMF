@@ -52,11 +52,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../VectorAndMatrix/build/Debug/GNU-Linux-x86 -L../Error/build/Debug/GNU-Linux-x86 -Wl,-rpath,../VectorAndMatrix/dist/Debug/GNU-Linux -L../VectorAndMatrix/dist/Debug/GNU-Linux -lVectorAndMatrix -Wl,-rpath,../Error/dist/Debug/GNU-Linux -L../Error/dist/Debug/GNU-Linux -lError -lgsl -lgslcblas
+LDLIBSOPTIONS=-L../VectorAndMatrix/build/Debug/GNU-Linux-x86 -L../Error/build/Debug/GNU-Linux-x86 -L../RegArchLib/build/Debug/GNU-Linux -Wl,-rpath,../RegArchLib/dist/Debug/GNU-Linux -L../RegArchLib/dist/Debug/GNU-Linux -lRegArchLib -Wl,-rpath,../VectorAndMatrix/dist/Debug/GNU-Linux -L../VectorAndMatrix/dist/Debug/GNU-Linux -lVectorAndMatrix -Wl,-rpath,../Error/dist/Debug/GNU-Linux -L../Error/dist/Debug/GNU-Linux -lError -lgsl -lgslcblas
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../RegArchLib/dist/Debug/GNU-Linux/libRegArchLib.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tests: ../VectorAndMatrix/dist/Debug/GNU-Linux/libVectorAndMatrix.so
 
@@ -73,6 +75,7 @@ ${OBJECTDIR}/Source/Tests.o: Source/Tests.cpp
 
 # Subprojects
 .build-subprojects:
+	cd ../RegArchLib && ${MAKE}  -f Makefile CONF=Debug
 	cd ../VectorAndMatrix && ${MAKE}  -f Makefile CONF=Debug
 	cd ../Error && ${MAKE}  -f Makefile CONF=Debug
 
@@ -83,6 +86,7 @@ ${OBJECTDIR}/Source/Tests.o: Source/Tests.cpp
 
 # Subprojects
 .clean-subprojects:
+	cd ../RegArchLib && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../VectorAndMatrix && ${MAKE}  -f Makefile CONF=Debug clean
 	cd ../Error && ${MAKE}  -f Makefile CONF=Debug clean
 
