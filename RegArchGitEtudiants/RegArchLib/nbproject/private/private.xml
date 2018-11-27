@@ -7,8 +7,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/user/4/.base/kettioui/home/Desktop/PPMMF/RegArchGitEtudiants/RegArchLib/Headers/RegArchCompute.h</file>
-            <file>file:/user/4/.base/kettioui/home/Desktop/PPMMF/RegArchGitEtudiants/RegArchLib/Sources/RegArchCompute.cpp</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cRegArchModel.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cCondVar.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Sources/StdAfxRegArchLib.cpp</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Sources/cAbstCondVar.cpp</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Sources/cRegArchValue.cpp</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/RegArchDef.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cAbstCondVar.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Sources/cAbstCondMean.cpp</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cCondMean.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cArch.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cRegArchValue.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Sources/cAr.cpp</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cMa.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cNormResiduals.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Sources/cAbstResiduals.cpp</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Sources/RegArchCompute.cpp</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/RegArchCompute.h</file>
+            <file>file:/user/2/.base/meftahg/home/Projet_Math/RegArchGitEtudiants/RegArchLib/Headers/cAbstCondMean.h</file>
         </group>
     </open-files>
 </project-private>

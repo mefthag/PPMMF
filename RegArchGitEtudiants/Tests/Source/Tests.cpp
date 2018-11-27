@@ -74,28 +74,22 @@ int main(int argc, char* argv[])
 	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
 
-	// Simulation
-	//uint myNSample = 10;
-	//cRegArchValue mySimulData;
-	//cDVector mySimulVector(myNSample);
-	//RegArchSimul(myNSample,myGivenValue,myModelArma);
-	//cout << "Valeurs simulees : " << endl ;
-	//mySimulVector = mySimulData.mYt;
-	//mySimulVector.Print();
+	 //Simulation
+	/*uint myNSample = 10;
+	cRegArchValue mySimulData;
+	cDVector mySimulVector(myNSample);
+	RegArchSimul(myNSample,myGivenValue,myModelArma);
+	cout << "Valeurs simulees : " << endl ;
+	mySimulVector = mySimulData.mYt;
+	mySimulVector.Print();
 
-  // Calcul de vraisemblance
-  //double myLoglikelihood = 0.;
-  //myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
-  //cout << "Log-vraisemblance : " << myLoglikelihood << endl;
+    // Calcul de vraisemblance
+    double myLoglikelihood = 0.;
+    myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
+    cout << "Log-vraisemblance : " << myLoglikelihood << endl;*/
 
-	//return 0 ;
+	return 0 ;
 
 
 }
 
-/*double RegArchLLH(cRegArchModel myModel, cRegArchValue myGivenValue){
-	double res = 0;
-		for (uint i = 0 ; i < myGivenValue.mYt.GetSize() ; i++)
-			  res+= -1/2*log(myGivenValue.mHt[i])+myModel.GetResid().LogDensity(myGivenValue.mUt[i]/sqrt(myGivenValue.mHt[i]));
-		}
-}*/

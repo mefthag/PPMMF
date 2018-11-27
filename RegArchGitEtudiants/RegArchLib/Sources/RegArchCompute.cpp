@@ -19,4 +19,12 @@ namespace RegArchLib {
 	}
     };
 
-} //namespace
+   
+    double RegArchLLH(cRegArchModel myModel, cRegArchValue myGivenValue){
+	double res = 0;
+		for (uint i = 0 ; i < myGivenValue.mYt.GetSize() ; i++)
+			  res+= -1/2*log(myGivenValue.mHt[i])+myModel.GetResid()->LogDensity(myGivenValue.mUt[i]/sqrt(myGivenValue.mHt[i]));
+		}
+
+
+}//namespace
