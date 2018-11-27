@@ -123,7 +123,7 @@ namespace RegArchLib {
 	 */
 	double cConstCondVar::ComputeVar(uint theDate, const cRegArchValue& theData) const
 	{
-		// Complete	
+		return 0;	
 	}
 
 	uint cConstCondVar::GetNParam(void) const
