@@ -14,7 +14,8 @@ namespace RegArchLib {
 	    myData->mHt[i] = model.mVar->ComputeVar(i, *myData);
 	    myData->mEpst[i] = ;
 	    myData->mUt[i] = sqrt(mHt[i])*mEpst[i];
-	    myData->mYt[i] = model.mMean->ComputeMean(i, *myData) + mUt[i];
+	    myData->mMt[i] = model.mMean->ComputeMean(i, *myData);
+	    myData->mYt[i] = myData->mMt[i] + myData->mUt[i];
 	}
     };
 
