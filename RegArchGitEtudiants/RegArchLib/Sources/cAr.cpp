@@ -44,7 +44,10 @@ namespace RegArchLib {
 	 */
 	cAr* cAr::PtrCopy() const
 	{
-		return new cAr(mvAr);
+	    cAr*  copie =  new cAr();
+            copie->copy(*this);
+            return  copie;
+ 
 	}
 
 

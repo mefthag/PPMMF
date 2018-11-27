@@ -42,7 +42,9 @@ namespace RegArchLib {
 
 	cGarch* cGarch::PtrCopy() const
 	{
-		return cGarch(mvGarch);
+	    cGarch*  copie =  new cGarch();
+            copie->copy(*this);
+            return  copie;
 	}
 
 	/*!

@@ -32,7 +32,10 @@ namespace RegArchLib {
 	 */
 	cConst* cConst::PtrCopy() const
 	{
-		return new cConst(mvConst);
+	    cConst*  copie =  new cConst();
+            copie->copy(*this);
+            return  copie;
+ 
 	}
 
 	/*!

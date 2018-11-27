@@ -31,9 +31,10 @@ namespace RegArchLib {
 	 * \fn cAbstResiduals* cNormResiduals::::PtrCopy()
 	 */
 
-	cAbstResiduals* cNormResiduals::PtrCopy() const
+	cNormResiduals* cNormResiduals::PtrCopy() const
 	{
-		// Complete
+            
+            return new cNormResiduals(NULL, mtR != NULL);
 	}
 
 	/*!
@@ -55,7 +56,10 @@ namespace RegArchLib {
 	
 	void cNormResiduals::Generate(uint theNSample, cDVector& theYt) const 
 	{
-		// Complete	
+	    theYt.ReAlloc(theNSample);
+	    for (i=0 ; i< theNSample ; i++){
+		theYt[i] = gsl_ran_ugaussian (this.mtR);
+	    }
 	}
 
 	/*!
@@ -65,7 +69,8 @@ namespace RegArchLib {
 	 */
 	double cNormResiduals::LogDensity(double theX) const
 	{
-		// Complete	
+            //double gsl_ran_gaussian_pdf (double x, double sigma)
+	    return - (theX * theX) /2 - LOG_SQRT_2_PI;
 	}
 
 	/*!

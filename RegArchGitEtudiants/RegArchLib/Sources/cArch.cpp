@@ -33,7 +33,10 @@ namespace RegArchLib {
 	 */
 	cArch* cArch::PtrCopy() const
 	{
-		return new cArch(mvArch); 
+            cArch*  copie =  new cArch();
+            copie->copy(*this);
+            return  copie;
+ 
 	}
 
 	/*!

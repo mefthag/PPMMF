@@ -34,9 +34,11 @@ namespace RegArchLib {
 	 * \fn cAbstCondVar* cConstCondVar::PtrCopy()
 	 */
 
-	cConstCondVar::PtrCopy() const
+	cConstCondVar* cConstCondVar::PtrCopy() const
 	{
-		 // Complete
+	    cConstCondVar*  copie =  new cConstCondVar();
+            copie->copy(*this);
+            return  copie;
 	}
 
 	/*!
