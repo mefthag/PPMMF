@@ -58,7 +58,7 @@ namespace RegArchLib {
 	{
 	    theYt.ReAlloc(theNSample);
 	    for (i=0 ; i< theNSample ; i++){
-		theYt[i] = N(0;1);
+		theYt[i] = gsl_ran_ugaussian (this.mtR);
 	    }
 	}
 
@@ -69,6 +69,7 @@ namespace RegArchLib {
 	 */
 	double cNormResiduals::LogDensity(double theX) const
 	{
+            //double gsl_ran_gaussian_pdf (double x, double sigma)
 	    return - (theX * theX) /2 - LOG_SQRT_2_PI;
 	}
 
