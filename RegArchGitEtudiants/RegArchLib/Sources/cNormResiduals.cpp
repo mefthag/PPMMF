@@ -57,8 +57,8 @@ namespace RegArchLib {
 	void cNormResiduals::Generate(uint theNSample, cDVector& theYt) const 
 	{
 	    theYt.ReAlloc(theNSample);
-	    for (i=0 ; i< theNSample ; i++){
-		theYt[i] = gsl_ran_ugaussian (this.mtR);
+	    for (int i=0 ; i< theNSample ; i++){
+		theYt[i] = gsl_ran_ugaussian (this->mtR);
 	    }
 	}
 

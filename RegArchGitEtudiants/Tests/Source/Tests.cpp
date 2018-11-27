@@ -2,6 +2,7 @@
 //
 
 #include "StdAfxTestCPlusPlus.h"
+#include "StdAfxRegArchLib.h"
 
 using namespace ErrorNameSpace;
 using namespace VectorAndMatrixNameSpace;
@@ -60,6 +61,7 @@ int main(int argc, char* argv[])
 	{
 		myGivenValue.mYt[t] = t;
 	}
+
 	cDVector myMeans(myNData);	
         // Moyennes conditionnelles
 
@@ -69,8 +71,22 @@ int main(int argc, char* argv[])
 		myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
 		myGivenValue.mMt[t] = myMeans[t];
 	}
-	cout << "Moyennes conditionnelles ARMA pur gaussien: " << endl ;
+	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
+
+	// Simulation
+	uint myNSample = 10;
+	cRegArchValue mySimulData;
+	cDVector mySimulVector(myNSample);
+	RegArchLib::RegArchSimul() ;
+	cout << "Valeurs simulees : " << endl ;
+	mySimulVector = mySimulData.mYt;
+	mySimulVector.Print();
+        
+        // Calcul de vraisemblance
+        double myLoglikelihood = 0.;
+        myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
+        cout << "Log-vraisemblance : " << myLoglikelihood << endl;
 
 	return 0 ;
 
