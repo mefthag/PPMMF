@@ -56,13 +56,14 @@ int main(int argc, char* argv[])
 
 	// Observations
 	uint myNData = 10 ;
-	cRegArchValue myGivenValue(myNData) ;
+	cRegArchValue myGivenValue(myNData);
 	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
 	{
-		myGivenValue.mYt[t] = t;
+		myGivenValue.mYt[t] = t+1;
 	}
 
 	cDVector myMeans(myNData);
+        ///////////////////////////////////////////////////////////////////////////////////////////////
         // Moyennes conditionnelles
 
 	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
@@ -71,23 +72,24 @@ int main(int argc, char* argv[])
 		myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
 		myGivenValue.mMt[t] = myMeans[t];
 	}
+        
 	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
 
-	 //Simulation
-	/*uint myNSample = 10;
-	cRegArchValue mySimulData;
+	//Simulation
+	uint myNSample = 10;
+	cRegArchValue mySimulData = myGivenValue;
 	cDVector mySimulVector(myNSample);
-	RegArchSimul(myNSample,myGivenValue,myModelArma);
+	cRegArchValue myGivenValue2 = RegArchSimul(myNSample,mySimulData,myModelArma);
 	cout << "Valeurs simulees : " << endl ;
-	mySimulVector = mySimulData.mYt;
+	mySimulVector = myGivenValue2.mYt;
 	mySimulVector.Print();
 
-    // Calcul de vraisemblance
-    double myLoglikelihood = 0.;
-    myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
-    cout << "Log-vraisemblance : " << myLoglikelihood << endl;*/
-
+        // Calcul de vraisemblance
+        double myLoglikelihood = 0.;
+        myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);
+        cout << "Log-vraisemblance : " << myLoglikelihood << endl;
+        
 	return 0 ;
 
 

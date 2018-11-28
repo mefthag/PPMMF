@@ -136,11 +136,15 @@ namespace RegArchLib {
 	 */
 	double cAr::ComputeMean(uint theDate, const cRegArchValue& theData) const
 	{
+               
 		uint r=mvAr.GetSize();
-		double mean=0;
-		for (int i=0; i<max(r,theDate); i++){
+                
+                
+		double mean = 0;
+		for (int i=0; i < min(r,theDate); i++){
 			mean+=mvAr[i]*theData.mYt[theDate-i-1];
 		}
+                
 		return mean;
 	}
 

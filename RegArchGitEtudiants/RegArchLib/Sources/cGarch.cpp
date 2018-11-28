@@ -166,7 +166,7 @@ namespace RegArchLib {
 	{
 	    	uint q = mvGarch.GetSize();
 		double cGarchMean = 0;
-		for (register uint l = 0; l < max(q,theDate); l++){
+		for (register uint l = 0; l < min(q,theDate); l++){
 			cGarchMean += mvGarch[l] * theData.mHt[theDate-l-1];
 		}
 		return cGarchMean;

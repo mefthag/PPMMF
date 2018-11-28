@@ -8,23 +8,34 @@
 */
 namespace RegArchLib {
 
-    void RegArchSimul(uint Time, cRegArchValue* myData, cRegArchModel model){
-	myData->ReAlloc(Time);
+    cRegArchValue RegArchSimul(uint Time, cRegArchValue myData, cRegArchModel model){
+	/*myData->ReAlloc(Time);
         model.GetResid()->Generate(Time, myData->mEpst);
 	for(int i=0; i < Time; i++){
 	    myData->mHt[i] = model.mVar->ComputeVar(i, *myData);
 	    myData->mUt[i] = sqrt(myData->mHt[i])*myData->mEpst[i];
 	    myData->mMt[i] = model.mMean->ComputeMean(i, *myData);
 	    myData->mYt[i] = myData->mMt[i] + myData->mUt[i];
+	}*/
+        cRegArchValue myGivenValue(Time);
+        model.GetResid()->Generate(Time, myGivenValue.mEpst);
+	for(int i=0; i < Time; i++){
+	    myGivenValue.mHt[i] = model.mVar->ComputeVar(i, myData);
+	    myGivenValue.mUt[i] = sqrt(myData.mHt[i])*myData.mEpst[i];
+	    myGivenValue.mMt[i] = model.mMean->ComputeMean(i, myData);
+	    myGivenValue.mYt[i] = myData.mMt[i] + myData.mUt[i];
 	}
+        return myGivenValue;
     };
 
    
     double RegArchLLH(cRegArchModel myModel, cRegArchValue myGivenValue){
 	double res = 0;
-		for (uint i = 0 ; i < myGivenValue.mYt.GetSize() ; i++)
-			  res+= -1/2*log(myGivenValue.mHt[i])+myModel.GetResid()->LogDensity(myGivenValue.mUt[i]/sqrt(myGivenValue.mHt[i]));
-		}
+        for (uint i = 0 ; i < myGivenValue.mYt.GetSize() ; i++){
+            res+= -1/2*log(myGivenValue.mHt[i])+myModel.GetResid()->LogDensity(myGivenValue.mUt[i]/sqrt(myGivenValue.mHt[i]));
+        }        
+        return res;
+    }
 
 
 }//namespace

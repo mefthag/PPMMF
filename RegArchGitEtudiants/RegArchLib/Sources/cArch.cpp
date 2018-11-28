@@ -152,7 +152,7 @@ namespace RegArchLib {
 	{
 		uint p=mvArch.GetSize();
 		double mean=0;
-		for (int k=0; k<max(p,theDate); k++){
+		for (int k=0; k< min(p,theDate); k++){
 			mean+=mvArch[k]*theDatas.mUt[theDate-k-1]*theDatas.mUt[theDate-k-1];
 		}
 		return mean;
