@@ -30,6 +30,7 @@ int main(int argc, char* argv[])
 	cMa myMa(2) ;
 	myMa.Set(0.8, 0) ;
 	myMa.Set(0.6, 1) ;
+        
 
 	cCondMean myCondMeanArma ;
 	myCondMeanArma.SetOneMean(0, myConst) ;
@@ -45,7 +46,41 @@ int main(int argc, char* argv[])
 
 	cRegArchModel myModelArma ;
 	myModelArma.SetMean(myCondMeanArma) ;
+	/*myModelArma.SetVar(myCondVar) ;
+	myModelArma.SetResid(myNormResid) ;
+	cout << "Modele : " ;
+	myModelArma.Print() ;
+
+	cRegArchModel myModelArmaCp(myModelArma) ;
+	cout << "Copie du modele : " ;
+	myModelArmaCp.Print() ;*/
+
+        
+        /*********
+	 *Garch pur
+	 *******/
+	
+
+	cArch	myArch(2) ;
+
+	myArch.Set(.9, 0) ;
+	myArch.Set(-.1, 1) ;
+	myArch.Print() ;
+
+	cGarch myGarch(2) ;
+	myGarch.Set(0.14, 0) ;
+	myGarch.Set(0.65, 1) ;
+        
+
+	
+	
+	myCondVar.SetOneVar(1, myArch) ;
+	myCondVar.SetOneVar(2, myGarch) ;
+
+
+
 	myModelArma.SetVar(myCondVar) ;
+        
 	myModelArma.SetResid(myNormResid) ;
 	cout << "Modele : " ;
 	myModelArma.Print() ;
@@ -53,31 +88,43 @@ int main(int argc, char* argv[])
 	cRegArchModel myModelArmaCp(myModelArma) ;
 	cout << "Copie du modele : " ;
 	myModelArmaCp.Print() ;
-
+        
 	// Observations
-	uint myNData = 10 ;
+	uint myNData = 50 ;
 	cRegArchValue myGivenValue(myNData);
 	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
 	{
-		myGivenValue.mYt[t] = t+1;
+		myGivenValue.mYt[t] = t;
 	}
 
 	cDVector myMeans(myNData);
+  
+         
+        
+        
+        
+        
         ///////////////////////////////////////////////////////////////////////////////////////////////
         // Moyennes conditionnelles
-
+        myModelArma.GetResid()->Generate(myNData , myGivenValue.mEpst);
 	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
-	{
+	{    
 		myMeans[t] = myCondMeanArma.ComputeMean(t, myGivenValue);
 		myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
-		myGivenValue.mMt[t] = myMeans[t];
+		myGivenValue.mHt[t] = (myGivenValue.mUt[t]*myGivenValue.mUt[t])/(myGivenValue.mEpst[t]*myGivenValue.mEpst[t]);
+                myGivenValue.mMt[t] = myMeans[t];
+                
 	}
         
 	cout << "Moyennes conditionnelles ARMA pur gaussien : " << endl ;
 	myMeans.Print();
 
+
+        
+        
+        
 	//Simulation
-	uint myNSample = 10;
+	uint myNSample = 54;
 	cRegArchValue mySimulData = myGivenValue;
 	cDVector mySimulVector(myNSample);
 	cRegArchValue myGivenValue2 = RegArchSimul(myNSample,mySimulData,myModelArma);
