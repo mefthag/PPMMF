@@ -14,8 +14,8 @@
 */
 namespace RegArchLib {
 // please complete function profile
-cRegArchValue extern _DLLEXPORT_ RegArchSimul(uint Time, cRegArchValue myData, cRegArchModel model) ; ///< Simulation of a general RegArch Model}
-
+/*cRegArchValue extern _DLLEXPORT_ RegArchSimul(uint Time, cRegArchValue myData, cRegArchModel model) ; ///< Simulation of a general RegArch Model}*/
+void extern _DLLEXPORT_ RegArchSimul(uint Time, cRegArchValue* myData, cRegArchModel model) ; ///< Simulation of a general RegArch Model}
 double extern _DLLEXPORT_ RegArchLLH(cRegArchModel myModel, cRegArchValue myGivenValue);
 }
 #endif //_REGARCHCOMPUTE_H_

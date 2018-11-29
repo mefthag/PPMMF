@@ -89,8 +89,9 @@ int main(int argc, char* argv[])
 	cout << "Copie du modele : " ;
 	myModelArmaCp.Print() ;
         
+        
 	// Observations
-	uint myNData = 50 ;
+	uint myNData = 10 ;
 	cRegArchValue myGivenValue(myNData);
 	for(uint t=0; t < myGivenValue.mYt.GetSize(); t++)
 	{
@@ -123,15 +124,28 @@ int main(int argc, char* argv[])
         
         
         
-	//Simulation
+	/*//Simulation 1
 	uint myNSample = 54;
 	cRegArchValue mySimulData = myGivenValue;
 	cDVector mySimulVector(myNSample);
 	cRegArchValue myGivenValue2 = RegArchSimul(myNSample,mySimulData,myModelArma);
 	cout << "Valeurs simulees : " << endl ;
 	mySimulVector = myGivenValue2.mYt;
+	mySimulVector.Print();*/
+
+        
+        //Simulation 
+
+	uint myNSample = 100;
+	cRegArchValue mySimulData = myGivenValue;
+	cDVector mySimulVector(myNSample);
+	RegArchSimul(myNSample,&mySimulData,myModelArma);
+	cout << "Valeurs simulees : " << endl ;
+	mySimulVector = mySimulData.mYt;
 	mySimulVector.Print();
 
+        
+        
         // Calcul de vraisemblance
         double myLoglikelihood = 0.;
         myLoglikelihood = RegArchLLH(myModelArma, myGivenValue);

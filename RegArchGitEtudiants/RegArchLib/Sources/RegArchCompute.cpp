@@ -8,15 +8,7 @@
 */
 namespace RegArchLib {
 
-    cRegArchValue RegArchSimul(uint Time, cRegArchValue myData, cRegArchModel model){
-	/*myData->ReAlloc(Time);
-        model.GetResid()->Generate(Time, myData->mEpst);
-	for(int i=0; i < Time; i++){
-	    myData->mHt[i] = model.mVar->ComputeVar(i, *myData);
-	    myData->mUt[i] = sqrt(myData->mHt[i])*myData->mEpst[i];
-	    myData->mMt[i] = model.mMean->ComputeMean(i, *myData);
-	    myData->mYt[i] = myData->mMt[i] + myData->mUt[i];
-	}*/
+    /*cRegArchValue RegArchSimul(uint Time, cRegArchValue myData, cRegArchModel model){
         cRegArchValue myGivenValue(Time);
         model.GetResid()->Generate(Time, myGivenValue.mEpst);
 	for(int i=0; i < myData.mYt.GetSize(); i++){
@@ -32,6 +24,18 @@ namespace RegArchLib {
 	    myGivenValue.mYt[i] = myGivenValue.mMt[i] + myGivenValue.mUt[i];
 	}
         return myGivenValue;
+    };*/
+    
+    void RegArchSimul(uint Time, cRegArchValue* myData, cRegArchModel model){
+	myData->ReAlloc(Time);
+        model.GetResid()->Generate(Time, myData->mEpst);
+	for(int i=0; i < Time; i++){
+	    myData->mHt[i] = model.mVar->ComputeVar(i, *myData);
+	    myData->mUt[i] = sqrt(myData->mHt[i])*myData->mEpst[i];
+	    myData->mMt[i] = model.mMean->ComputeMean(i, *myData);
+	    myData->mYt[i] = myData->mMt[i] + myData->mUt[i];
+	}
+        
     };
 
    

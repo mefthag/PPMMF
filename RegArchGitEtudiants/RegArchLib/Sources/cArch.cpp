@@ -151,11 +151,11 @@ namespace RegArchLib {
 	double cArch::ComputeVar(uint theDate, const cRegArchValue& theDatas) const
 	{
 		uint p=mvArch.GetSize();
-		double mean=0;
+		double archVar = 0;
 		for (int k=0; k< min(p,theDate); k++){
-			mean+=mvArch[k]*theDatas.mUt[theDate-k-1]*theDatas.mUt[theDate-k-1];
+			archVar +=mvArch[k]*theDatas.mUt[theDate-k-1]*theDatas.mUt[theDate-k-1];
 		}
-		return mean;
+		return archVar;
 	}
 
 	uint cArch::GetNParam(void) const
