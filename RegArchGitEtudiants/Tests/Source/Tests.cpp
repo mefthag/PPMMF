@@ -112,6 +112,7 @@ int main(int argc, char* argv[])
 	{    
 		myMeans[t] = myCondMeanArma.ComputeMean(t, myGivenValue);
 		myGivenValue.mUt[t] = myGivenValue.mYt[t] - myMeans[t];
+		//calcul des mHt
 		myGivenValue.mHt[t] = (myGivenValue.mUt[t]*myGivenValue.mUt[t])/(myGivenValue.mEpst[t]*myGivenValue.mEpst[t]);
                 myGivenValue.mMt[t] = myMeans[t];
                 
@@ -122,17 +123,6 @@ int main(int argc, char* argv[])
 
 
         
-        
-        
-	/*//Simulation 1
-	uint myNSample = 54;
-	cRegArchValue mySimulData = myGivenValue;
-	cDVector mySimulVector(myNSample);
-	cRegArchValue myGivenValue2 = RegArchSimul(myNSample,mySimulData,myModelArma);
-	cout << "Valeurs simulees : " << endl ;
-	mySimulVector = myGivenValue2.mYt;
-	mySimulVector.Print();*/
-
         
         //Simulation 
 
